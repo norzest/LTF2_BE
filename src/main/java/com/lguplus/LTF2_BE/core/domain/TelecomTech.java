@@ -4,10 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum TelecomTech {
-    LTE(1, "LTE"),
-    G3(2, "3G"),
-    G4(3, "4G"),
-    G5(4, "5G");
+    G3(1, "3G"),
+    LTE(2, "LTE"),
+    G5(3, "5G");
 
     private Integer code;
     private String value;
