@@ -7,17 +7,17 @@ import javax.persistence.AttributeConverter;
 import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
-public class MediaServiceConverter implements AttributeConverter<MediaService, String> {
+public class MediaServiceConverter implements AttributeConverter<MediaService, Integer> {
 
     // int 값으로 변환 후 DB에 저장
     @Override
-    public String convertToDatabaseColumn(MediaService attribute) {
+    public Integer convertToDatabaseColumn(MediaService attribute) {
         return attribute.getCode();
     }
 
     // DB 값을 문자열로 변환해서 불러오기
     @Override
-    public MediaService convertToEntityAttribute(String dbData) {
+    public MediaService convertToEntityAttribute(Integer dbData) {
         return EnumSet.allOf(MediaService.class).stream()
                 .filter(e -> e.getCode().equals(dbData))
                 .findAny()
