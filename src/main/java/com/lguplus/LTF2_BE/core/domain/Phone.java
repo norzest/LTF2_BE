@@ -1,5 +1,7 @@
 package com.lguplus.LTF2_BE.core.domain;
 
+import com.lguplus.LTF2_BE.api.util.ManuFacturingCompanyConverter;
+import com.lguplus.LTF2_BE.api.util.TelecomTechConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,10 +30,10 @@ public class Phone {
 
     private String previewImg;
 
-    @Convert(converter = ManuFacturingCompany.class)
+    @Convert(converter = ManuFacturingCompanyConverter.class)
     private ManuFacturingCompany manufacturingCompany;
 
-    @Convert(converter = TelecomTech.class)
+    @Convert(converter = TelecomTechConverter.class)
     private TelecomTech telecomTech;
 
     @OneToOne(fetch = FetchType.LAZY)

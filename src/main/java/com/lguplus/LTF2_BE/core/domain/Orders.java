@@ -1,5 +1,6 @@
 package com.lguplus.LTF2_BE.core.domain;
 
+import com.lguplus.LTF2_BE.api.util.OrderPlanConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +20,7 @@ public class Orders {
 
     private LocalDateTime orderDate;
 
-    @Convert(converter = OrderPlan.class)
+    @Convert(converter = OrderPlanConverter.class)
     private OrderPlan orderPlan;
 
     @ManyToOne(fetch = FetchType.LAZY)

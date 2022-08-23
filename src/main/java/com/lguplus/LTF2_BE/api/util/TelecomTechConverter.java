@@ -7,17 +7,17 @@ import javax.persistence.AttributeConverter;
 import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
-public class TelecomTechConverter implements AttributeConverter<TelecomTech, String> {
+public class TelecomTechConverter implements AttributeConverter<TelecomTech, Integer> {
 
     // int 값으로 변환 후 DB에 저장
     @Override
-    public String convertToDatabaseColumn(TelecomTech attribute) {
+    public Integer convertToDatabaseColumn(TelecomTech attribute) {
         return attribute.getCode();
     }
 
     // DB 값을 문자열로 변환해서 불러오기
     @Override
-    public TelecomTech convertToEntityAttribute(String dbData) {
+    public TelecomTech convertToEntityAttribute(Integer dbData) {
         return EnumSet.allOf(TelecomTech.class).stream()
                 .filter(e -> e.getCode().equals(dbData))
                 .findAny()

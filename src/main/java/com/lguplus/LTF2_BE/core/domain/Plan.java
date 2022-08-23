@@ -1,6 +1,7 @@
 package com.lguplus.LTF2_BE.core.domain;
 
 import com.lguplus.LTF2_BE.api.util.PlanTypeConverter;
+import com.lguplus.LTF2_BE.api.util.TelecomTechConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -47,7 +48,7 @@ public class Plan {
 
     private String familySig5g;
 
-    @Convert(converter = TelecomTech.class)
+    @Convert(converter = TelecomTechConverter.class)
     private TelecomTech telecomTech;
 
     @Convert(converter = PlanTypeConverter.class)
