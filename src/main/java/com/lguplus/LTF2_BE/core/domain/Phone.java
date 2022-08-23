@@ -28,11 +28,11 @@ public class Phone {
 
     private String previewImg;
 
-    @Convert
-    private String manufacturingCompany;
+    @Convert(converter = ManuFacturingCompany.class)
+    private ManuFacturingCompany manufacturingCompany;
 
-    @Convert
-    private String telecomTech;
+    @Convert(converter = TelecomTech.class)
+    private TelecomTech telecomTech;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "phone_info_id")

@@ -1,5 +1,6 @@
 package com.lguplus.LTF2_BE.core.domain;
 
+import com.lguplus.LTF2_BE.api.util.MediaServiceConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,8 +17,8 @@ public class PlanMediaService {
     @Column(name = "plan_media_service_id")
     private Long id;
 
-    @Convert
-    private String mediaService;
+    @Convert(converter = MediaServiceConverter.class)
+    private MediaService mediaService;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")

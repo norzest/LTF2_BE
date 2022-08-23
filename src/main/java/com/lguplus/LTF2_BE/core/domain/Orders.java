@@ -19,8 +19,8 @@ public class Orders {
 
     private LocalDateTime orderDate;
 
-    @Convert
-    private String orderPlan;
+    @Convert(converter = OrderPlan.class)
+    private OrderPlan orderPlan;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "phone_id")
