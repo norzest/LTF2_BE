@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="phone_color")
 public class PhoneColor {
 
     @Id

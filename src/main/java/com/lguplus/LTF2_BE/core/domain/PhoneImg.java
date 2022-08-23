@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="phone_img")
 public class PhoneImg {
 
     @Id

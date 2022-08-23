@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="phone")
 public class Phone {
 
     @Id
@@ -44,7 +45,7 @@ public class Phone {
     private List<PublicSupport> publicSupports = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PhoneColor> phoneColors = new ArrayList<>();
