@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="plan_media_service")
 public class PlanMediaService {
 
     @Id

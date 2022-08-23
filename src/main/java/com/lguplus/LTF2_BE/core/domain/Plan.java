@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="plan")
 public class Plan {
 
     @Id

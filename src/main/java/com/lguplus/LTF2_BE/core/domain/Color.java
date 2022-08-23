@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="color")
 public class Color {
 
     @Id
@@ -23,4 +24,7 @@ public class Color {
 
     @OneToMany(mappedBy = "color", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PhoneColor> phoneColors = new ArrayList<>();
+
+    @OneToMany(mappedBy = "color", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Orders> orders = new ArrayList<>();
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="public_support")
 public class PublicSupport {
 
     @Id
