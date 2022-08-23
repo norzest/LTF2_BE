@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +18,8 @@ public class Order {
 
     private LocalDateTime orderDate;
 
-    @Convert
-    private String orderPlan;
+    @Convert(converter = OrderPlan.class)
+    private OrderPlan orderPlan;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "phone_id")

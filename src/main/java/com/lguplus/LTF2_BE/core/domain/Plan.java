@@ -1,5 +1,6 @@
 package com.lguplus.LTF2_BE.core.domain;
 
+import com.lguplus.LTF2_BE.api.util.PlanTypeConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,7 +34,6 @@ public class Plan {
 
     private String voicePlus;
 
-    @Convert
     private String message;
 
     private String smartDevice;
@@ -42,22 +42,21 @@ public class Plan {
 
     private String premiumService;
 
-    @Convert
     private String basicBenefit;
 
     private String familySig5g;
 
-    @Convert
-    private String telecomTech;
+    @Convert(converter = TelecomTech.class)
+    private TelecomTech telecomTech;
 
-    @Convert
-    private String planType;
+    @Convert(converter = PlanTypeConverter.class)
+    private PlanType planType;
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PublicSupport> publicSupports = new ArrayList<>();
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PlanMediaService> planMediaServices = new ArrayList<>();

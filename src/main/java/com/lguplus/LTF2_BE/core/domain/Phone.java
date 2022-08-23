@@ -27,11 +27,11 @@ public class Phone {
 
     private String previewImg;
 
-    @Convert
-    private String manufacturingCompany;
+    @Convert(converter = ManuFacturingCompany.class)
+    private ManuFacturingCompany manufacturingCompany;
 
-    @Convert
-    private String telecomTech;
+    @Convert(converter = TelecomTech.class)
+    private TelecomTech telecomTech;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "phone_info_id")
@@ -44,7 +44,7 @@ public class Phone {
     private List<PublicSupport> publicSupports = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "phone", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<PhoneColor> phoneColors = new ArrayList<>();
