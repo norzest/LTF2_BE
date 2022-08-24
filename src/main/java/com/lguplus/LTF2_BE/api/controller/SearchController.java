@@ -41,7 +41,6 @@ public class SearchController {
             resultMap.put("message", "두 글자 이상의 검색어를 입력하세요.");
             status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
-            resultMap.put("message", "알 수 없는 오류가 발생했습니다.");
             status = HttpStatus.NOT_FOUND;
         }
 
