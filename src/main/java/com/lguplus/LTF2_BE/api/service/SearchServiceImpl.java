@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class SearchServicempl implements SearchService{
+public class SearchServiceImpl implements SearchService{
 
     private final PhoneRepository phoneRepository;
 
