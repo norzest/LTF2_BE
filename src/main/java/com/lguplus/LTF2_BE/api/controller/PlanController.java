@@ -48,8 +48,8 @@ public class PlanController {
         return new ResponseEntity<>(resultMap, status);
     }
 
-    @GetMapping("/telecom-tech/{telecomTech}")
-    public ResponseEntity<Map<String, Object>> findByTelecomTech(@PathVariable(value="telecomTech") String telecomTech) {
+    @GetMapping("/telecom-tech/{telecom_tech}")
+    public ResponseEntity<Map<String, Object>> findByTelecomTech(@PathVariable(value="telecom_tech") String telecomTech) {
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = null;
 
