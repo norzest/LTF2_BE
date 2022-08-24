@@ -18,4 +18,33 @@ public enum MediaService {
         this.code = code;
         this.value = value;
     }
+
+    public static MediaService convertValue(String mediaService) {
+        MediaService result = null;
+
+        switch (mediaService) {
+            case "U+영화월정액":
+                result = MediaService.MOVIE;
+                break;
+            case "지니뮤직(모바일+PC)":
+                result = MediaService.GENIEPC;
+                break;
+            case "지니뮤직 APP 음악감상":
+                result = MediaService.GENIEAPP;
+                break;
+            case "지니 300회":
+                result = MediaService.GENIE300;
+                break;
+            case "U+아이들생생도서관":
+                result = MediaService.IDLELIB;
+                break;
+            case "밀리의 서재":
+                result = MediaService.MILLILIB;
+                break;
+            default:
+                break;
+        }
+
+        return result;
+    }
 }

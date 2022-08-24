@@ -19,4 +19,36 @@ public enum PlanType {
         this.code = code;
         this.value = value;
     }
+
+    public static PlanType convertValue(String planType) {
+        PlanType result = null;
+
+        switch (planType) {
+            case "데이터 일반":
+                result = PlanType.BASIC;
+                break;
+            case "데이터 무제한":
+                result = PlanType.UNLIMITED;
+                break;
+            case "청소년":
+                result = PlanType.TEENAGER;
+                break;
+            case "시니어":
+                result = PlanType.SENIOR;
+                break;
+            case "다이렉트":
+                result = PlanType.DIRECT;
+                break;
+            case "복지":
+                result = PlanType.WELFARE;
+                break;
+            case "현역병사":
+                result = PlanType.SOLDIER;
+                break;
+            default:
+                break;
+        }
+
+        return result;
+    }
 }
