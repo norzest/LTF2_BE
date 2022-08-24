@@ -3,9 +3,11 @@ package com.lguplus.LTF2_BE.api.util;
 import com.lguplus.LTF2_BE.core.domain.ManuFacturingCompany;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
+@Converter
 public class ManuFacturingCompanyConverter implements AttributeConverter<ManuFacturingCompany, Integer> {
 
     // int 값으로 변환 후 DB에 저장

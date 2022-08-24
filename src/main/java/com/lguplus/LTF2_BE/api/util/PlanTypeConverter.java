@@ -4,9 +4,11 @@ import com.lguplus.LTF2_BE.core.domain.OrderPlan;
 import com.lguplus.LTF2_BE.core.domain.PlanType;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
+@Converter
 public class PlanTypeConverter implements AttributeConverter<PlanType, Integer> {
 
     // int 값으로 변환 후 DB에 저장

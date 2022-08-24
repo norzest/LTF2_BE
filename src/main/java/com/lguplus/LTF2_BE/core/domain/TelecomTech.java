@@ -15,4 +15,24 @@ public enum TelecomTech {
         this.code = code;
         this.value = value;
     }
+
+    public static TelecomTech convertValue(String telecomTech) {
+        TelecomTech result = null;
+
+        switch (telecomTech) {
+            case "5G":
+                result = TelecomTech.G5;
+                break;
+            case "LTE":
+                result = TelecomTech.LTE;
+                break;
+            case "3G":
+                result = TelecomTech.G3;
+                break;
+            default:
+                break;
+        }
+
+        return result;
+    }
 }

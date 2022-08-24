@@ -15,4 +15,24 @@ public enum ManuFacturingCompany {
         this.code = code;
         this.value = value;
     }
+
+    public static ManuFacturingCompany convertValue (String manufacturingCompany) {
+        ManuFacturingCompany result = null;
+
+        switch (manufacturingCompany) {
+            case "기타":
+                result = ManuFacturingCompany.OTHER;
+                break;
+            case "삼성":
+                result = ManuFacturingCompany.SAMSUNG;
+                break;
+            case "애플":
+                result = ManuFacturingCompany.APPLE;
+                break;
+            default:
+                break;
+        }
+
+        return result;
+    }
 }
