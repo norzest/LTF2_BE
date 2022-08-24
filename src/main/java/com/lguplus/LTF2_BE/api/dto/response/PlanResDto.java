@@ -1,4 +1,4 @@
-package com.lguplus.LTF2_BE.api.dto;
+package com.lguplus.LTF2_BE.api.dto.response;
 
 
 import lombok.Builder;

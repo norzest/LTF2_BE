@@ -1,9 +1,8 @@
 package com.lguplus.LTF2_BE.api.controller;
 
-import com.lguplus.LTF2_BE.api.dto.PlanResDto;
+import com.lguplus.LTF2_BE.api.dto.response.PlanResDto;
 import com.lguplus.LTF2_BE.api.service.PlanService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PlanController {
 
-    @Autowired
-    PlanService planService;
+    private final PlanService planService;
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> findAll() {

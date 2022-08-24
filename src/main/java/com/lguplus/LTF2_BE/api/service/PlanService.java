@@ -1,6 +1,6 @@
 package com.lguplus.LTF2_BE.api.service;
 
-import com.lguplus.LTF2_BE.api.dto.PlanResDto;
+import com.lguplus.LTF2_BE.api.dto.response.PlanResDto;
 
 import java.util.List;
 

@@ -1,13 +1,12 @@
 package com.lguplus.LTF2_BE.api.service;
 
-import com.lguplus.LTF2_BE.api.dto.PlanResDto;
+import com.lguplus.LTF2_BE.api.dto.response.PlanResDto;
 import com.lguplus.LTF2_BE.core.domain.MediaService;
 import com.lguplus.LTF2_BE.core.domain.Plan;
 import com.lguplus.LTF2_BE.core.domain.PlanMediaService;
 import com.lguplus.LTF2_BE.core.domain.TelecomTech;
 import com.lguplus.LTF2_BE.core.repository.PlanRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,8 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PlanServiceImpl implements PlanService {
 
-    @Autowired
-    PlanRepository planRepository;
+    private final PlanRepository planRepository;
 
     @Override
     public List<PlanResDto> findAll() {
