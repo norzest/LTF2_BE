@@ -35,13 +35,5 @@ public class PhoneController {
         return new ResponseEntity<Map<String, Object>>(resultMap, status);
     }
 
-    @GetMapping("/{phoneId}")
-    public ResponseEntity<Map<String, Object>> findPhoneDetail(
-            @PathVariable Long phoneId) {
-
-        Map<String, Object> resultMap = new HashMap<>();
-        HttpStatus status = null;
-
-
-    }
+    
 }
