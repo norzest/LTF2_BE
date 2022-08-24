@@ -31,7 +31,7 @@ public class Phone {
     private String previewImg;
 
     @Convert(converter = ManuFacturingCompanyConverter.class)
-    private ManuFacturingCompany manufacturingCompany;
+    private ManufacturingCompany manufacturingCompany;
 
     @Convert(converter = TelecomTechConverter.class)
     private TelecomTech telecomTech;

@@ -1,6 +1,5 @@
 package com.lguplus.LTF2_BE.api.util;
 
-import com.lguplus.LTF2_BE.core.domain.ManuFacturingCompany;
 import com.lguplus.LTF2_BE.core.domain.TelecomTech;
 
 import javax.persistence.AttributeConverter;
