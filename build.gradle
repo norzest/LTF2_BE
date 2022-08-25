@@ -31,6 +31,8 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
+	// Swagger
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
