@@ -26,7 +26,9 @@ public class PhoneInfo {
 
     private String camera;
 
-    private String memory;
+    private Integer memory;
+
+    private String memoryDes;
 
     private String storage;
 
