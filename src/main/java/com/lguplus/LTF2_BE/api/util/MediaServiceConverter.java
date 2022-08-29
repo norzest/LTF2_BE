@@ -1,7 +1,6 @@
 package com.lguplus.LTF2_BE.api.util;
 
 import com.lguplus.LTF2_BE.core.domain.MediaService;
-import com.lguplus.LTF2_BE.core.domain.OrderPlan;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
