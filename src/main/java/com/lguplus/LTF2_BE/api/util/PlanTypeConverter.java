@@ -1,6 +1,5 @@
 package com.lguplus.LTF2_BE.api.util;
 
-import com.lguplus.LTF2_BE.core.domain.OrderPlan;
 import com.lguplus.LTF2_BE.core.domain.PlanType;
 
 import javax.persistence.AttributeConverter;
