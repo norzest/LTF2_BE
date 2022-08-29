@@ -25,7 +25,9 @@ public class PhoneInfoResDto {
 
     private String camera;
 
-    private String memory;
+    private Integer memory;
+
+    private String memoryDes;
 
     private String storage;
 
@@ -41,6 +43,7 @@ public class PhoneInfoResDto {
         weight = phoneInfo.getWeight();
         camera = phoneInfo.getCamera();
         memory = phoneInfo.getMemory();
+        memoryDes = phoneInfo.getMemoryDes();
         storage = phoneInfo.getStorage();
         waterproof = phoneInfo.getWaterproof();
         colorList = phoneInfo.getPhone().getPhoneColors()
