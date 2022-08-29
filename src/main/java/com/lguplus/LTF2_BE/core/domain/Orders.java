@@ -1,6 +1,9 @@
 package com.lguplus.LTF2_BE.core.domain;
 
+import com.lguplus.LTF2_BE.api.util.BillAcceptWayConverter;
+import com.lguplus.LTF2_BE.api.util.CustomerTypeConverter;
 import com.lguplus.LTF2_BE.api.util.DeliveryTypeConverter;
+import com.lguplus.LTF2_BE.api.util.PayWayConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +26,7 @@ public class Orders {
     @Convert(converter = DeliveryTypeConverter.class)
     private DeliveryType deliveryType;
 
-//    @Convert
+    @Convert(converter = CustomerTypeConverter.class)
     private CustomerType customerType;
 
     private String customerName;
@@ -36,10 +39,10 @@ public class Orders {
 
     private String customerAddress;
 
-//    @Convert
+    @Convert(converter = BillAcceptWayConverter.class)
     private BillAcceptWay billAcceptWay;
 
-//    @Convert
+    @Convert(converter = PayWayConverter.class)
     private PayWay payWay;
 
     @ManyToOne(fetch = FetchType.LAZY)
