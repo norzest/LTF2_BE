@@ -16,4 +16,21 @@ public enum BillAcceptWay {
         this.code = code;
         this.value = value;
     }
+
+    public static BillAcceptWay convertValue(String billAcceptWay) {
+        BillAcceptWay result = null;
+
+        switch (billAcceptWay) {
+            case "문자 메세지":
+                result = BillAcceptWay.MESSAGE;
+                break;
+            case "이메일":
+                result = BillAcceptWay.EMAIL;
+                break;
+            default:
+                break;
+        }
+
+        return result;
+    }
 }
