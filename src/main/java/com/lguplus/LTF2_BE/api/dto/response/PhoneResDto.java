@@ -31,6 +31,8 @@ public class PhoneResDto {
 
     private List<ColorResDto> colorList;
 
+    private Integer orderCount;
+
     public PhoneResDto(Phone phone) {
         phoneId = phone.getId();
         titleName = phone.getTitleName();
@@ -44,5 +46,6 @@ public class PhoneResDto {
         colorList = phone.getPhoneColors()
                 .stream().map(PhoneColor::getColor).collect(Collectors.toList())
                 .stream().map(ColorResDto::new).collect(Collectors.toList());
+        orderCount = phone.getOrders().size();
     }
 }
