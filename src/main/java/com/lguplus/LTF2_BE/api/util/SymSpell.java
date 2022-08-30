@@ -1,5 +1,7 @@
 package com.lguplus.LTF2_BE.api.util;
 
+import org.springframework.core.io.ClassPathResource;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -456,8 +458,19 @@ public class SymSpell
         //If you use mixed vocabulary use the language parameter in Correct() and CreateDictionary() accordingly.
         //You may use CreateDictionaryEntry() to update a (self learning) dictionary incrementally
         //To extend spelling correction beyond single words to phrases (e.g. correcting "unitedkingom" to "united kingdom") simply add those phrases with CreateDictionaryEntry().
-        CreateDictionary("/Users/pranavgupta/Desktop/bot/cities.txt","");
-        ReadFromStdIn();
+
+        ClassPathResource resource = new ClassPathResource("dict.txt");
+        System.out.println(resource.getPath());
+        System.out.println(resource.getFilename());
+        try {
+            System.out.println(resource.getURL());
+            System.out.println(resource.getURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        CreateDictionary("/Users/pranavgupta/Desktop/bot/cities.txt","");
+//        ReadFromStdIn();
     }
 
     // Damerau–Levenshtein distance algorithm and code
