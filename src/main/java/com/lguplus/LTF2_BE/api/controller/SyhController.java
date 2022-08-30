@@ -44,7 +44,6 @@ public class SyhController {
                         spellCheckSettings.getReplaceWeight(),
                         spellCheckSettings.getTranspositionWeight(),
                         new QwertyDistance());
-
         
 
         return new ResponseEntity<>(resultMap, status);
