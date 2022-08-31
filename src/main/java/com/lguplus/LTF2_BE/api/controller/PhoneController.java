@@ -71,13 +71,11 @@ public class PhoneController {
         try {
             phoneList = phoneService.findPhonesByTelecomTech(telecomTech);
 
-            if (phoneList.size() == 0) {
-                resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
-                status = HttpStatus.NOT_FOUND;
-            } else {
-                resultMap.put("phoneList", phoneList);
-                status = HttpStatus.OK;
-            }
+            resultMap.put("phoneList", phoneList);
+            status = HttpStatus.OK;
+        } catch (NoSuchElementException e) {
+            resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
+            status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
             resultMap.put("message", "상품을 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
