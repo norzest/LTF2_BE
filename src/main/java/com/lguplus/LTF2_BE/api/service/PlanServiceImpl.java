@@ -2,7 +2,7 @@ package com.lguplus.LTF2_BE.api.service;
 
 import com.lguplus.LTF2_BE.api.dto.response.PlanResDto;
 import com.lguplus.LTF2_BE.core.domain.Plan;
-import com.lguplus.LTF2_BE.core.domain.TelecomTech;
+import com.lguplus.LTF2_BE.core.domain.enm.TelecomTech;
 import com.lguplus.LTF2_BE.core.repository.PlanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

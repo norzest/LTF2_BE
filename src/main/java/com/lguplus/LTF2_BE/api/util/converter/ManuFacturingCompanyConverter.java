@@ -1,6 +1,6 @@
-package com.lguplus.LTF2_BE.api.util;
+package com.lguplus.LTF2_BE.api.util.converter;
 
-import com.lguplus.LTF2_BE.core.domain.TelecomTech;
+import com.lguplus.LTF2_BE.core.domain.enm.ManufacturingCompany;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -8,18 +8,18 @@ import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
 @Converter
-public class TelecomTechConverter implements AttributeConverter<TelecomTech, Integer> {
+public class ManuFacturingCompanyConverter implements AttributeConverter<ManufacturingCompany, Integer> {
 
     // int 값으로 변환 후 DB에 저장
     @Override
-    public Integer convertToDatabaseColumn(TelecomTech attribute) {
+    public Integer convertToDatabaseColumn(ManufacturingCompany attribute) {
         return attribute.getCode();
     }
 
     // DB 값을 문자열로 변환해서 불러오기
     @Override
-    public TelecomTech convertToEntityAttribute(Integer dbData) {
-        return EnumSet.allOf(TelecomTech.class).stream()
+    public ManufacturingCompany convertToEntityAttribute(Integer dbData) {
+        return EnumSet.allOf(ManufacturingCompany.class).stream()
                 .filter(e -> e.getCode().equals(dbData))
                 .findAny()
                 .orElseThrow(NoSuchElementException::new);

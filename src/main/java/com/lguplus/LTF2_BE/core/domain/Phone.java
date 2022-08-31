@@ -1,7 +1,9 @@
 package com.lguplus.LTF2_BE.core.domain;
 
-import com.lguplus.LTF2_BE.api.util.ManuFacturingCompanyConverter;
-import com.lguplus.LTF2_BE.api.util.TelecomTechConverter;
+import com.lguplus.LTF2_BE.api.util.converter.ManuFacturingCompanyConverter;
+import com.lguplus.LTF2_BE.api.util.converter.TelecomTechConverter;
+import com.lguplus.LTF2_BE.core.domain.enm.ManufacturingCompany;
+import com.lguplus.LTF2_BE.core.domain.enm.TelecomTech;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

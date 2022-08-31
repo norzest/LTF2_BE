@@ -4,6 +4,7 @@ import com.lguplus.LTF2_BE.api.dto.response.ColorResDto;
 import com.lguplus.LTF2_BE.api.dto.response.PhoneDetailResDto;
 import com.lguplus.LTF2_BE.api.dto.response.PhoneResDto;
 import com.lguplus.LTF2_BE.core.domain.*;
+import com.lguplus.LTF2_BE.core.domain.enm.TelecomTech;
 import com.lguplus.LTF2_BE.core.repository.ColorRepository;
 import com.lguplus.LTF2_BE.core.repository.PhoneColorRepository;
 import com.lguplus.LTF2_BE.core.repository.PhoneImgRepository;

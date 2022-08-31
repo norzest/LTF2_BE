@@ -1,7 +1,9 @@
 package com.lguplus.LTF2_BE.core.domain;
 
-import com.lguplus.LTF2_BE.api.util.PlanTypeConverter;
-import com.lguplus.LTF2_BE.api.util.TelecomTechConverter;
+import com.lguplus.LTF2_BE.api.util.converter.PlanTypeConverter;
+import com.lguplus.LTF2_BE.api.util.converter.TelecomTechConverter;
+import com.lguplus.LTF2_BE.core.domain.enm.PlanType;
+import com.lguplus.LTF2_BE.core.domain.enm.TelecomTech;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
