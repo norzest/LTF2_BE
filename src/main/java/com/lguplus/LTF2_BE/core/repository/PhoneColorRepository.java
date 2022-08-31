@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PhoneColorRepository extends JpaRepository<PhoneColor, Long> {
 
+    // DB에서 phoneId & colorId로 PhoneColor 조회한 후 반환
     PhoneColor findByPhoneIdAndColorId(Long phoneId, Long colorId);
 }

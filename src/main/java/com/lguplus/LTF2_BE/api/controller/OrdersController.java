@@ -34,10 +34,14 @@ public class OrdersController {
         Long orderId = null;
 
         try {
+            // 상품 주문을 위해 ordersReqDto를 인자로 ordersService의 createOrder() 함수 호출
             orderId = ordersService.createOrder(ordersReqDto);
+            // 주문이 성공했을 경우 client에 orderId 반환
             resultMap.put("orderId", orderId);
             status = HttpStatus.CREATED;
         } catch (Exception e) {
+            // 주문이 실패했을 경우 500 error 응답
+            // 대표적으로 NullPointException 발생 시 500 error 응답
             resultMap.put("message", "상품을 등록하는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }

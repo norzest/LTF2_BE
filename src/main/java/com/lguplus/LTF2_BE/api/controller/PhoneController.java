@@ -37,16 +37,23 @@ public class PhoneController {
         List<PhoneResDto> phoneList = null;
 
         try {
+            // 상품 전체 조회를 위해 phoneService의 findPhones() 함수 호출
             phoneList = phoneService.findPhones();
 
             if (phoneList.size() == 0) {
-                resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
-                status = HttpStatus.NOT_FOUND;
+                // 상품 리스트가 없을 경우 NoSuchElementException 발생
+                throw new NoSuchElementException();
             } else {
+                // 상품 리스트가 있을 경우 client에 phoneList 반환
                 resultMap.put("phoneList", phoneList);
                 status = HttpStatus.OK;
             }
+        } catch (NoSuchElementException e) {
+            // NoSuchElementException 발생 시 404 error 응답
+            resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
+            status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
+            // 그 외 Exception 발생 시 500 error 응답
             resultMap.put("message", "상품을 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -69,14 +76,18 @@ public class PhoneController {
         List<PhoneResDto> phoneList = null;
 
         try {
+            // 통신기술에 따른 상품 리스트 조회를 위해 phoneService의 findPhonesByTelecomTech() 함수 호출
             phoneList = phoneService.findPhonesByTelecomTech(telecomTech);
 
+            // 상품 리스트가 있을 경우 client에 phoneList 반환
             resultMap.put("phoneList", phoneList);
             status = HttpStatus.OK;
         } catch (NoSuchElementException e) {
+            // NoSuchElementException 발생 시 404 error 응답
             resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
             status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
+            // 그 외 Exception 발생 시 500 error 응답
             resultMap.put("message", "상품을 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -99,14 +110,18 @@ public class PhoneController {
         PhoneDetailResDto phoneDetail = null;
 
         try {
+            // 상품 상세 조회를 위해 phoneService의 findPhoneDetail() 함수 호출
             phoneDetail = phoneService.findPhoneDetail(phoneId);
 
+            // 상품이 있을 경우 client에 phoneDetail 반환
             resultMap.put("phoneDetail", phoneDetail);
             status = HttpStatus.OK;
         } catch (NoSuchElementException e) {
+            // NoSuchElementException 발생 시 404 error 응답
             resultMap.put("message", "해당하는 상품이 존재하지 않습니다.");
             status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
+            // 그 외 Exception 발생 시 500 error 응답
             resultMap.put("message", "상품을 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
