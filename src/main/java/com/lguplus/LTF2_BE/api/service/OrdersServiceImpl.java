@@ -24,25 +24,24 @@ public class OrdersServiceImpl implements OrdersService{
     @Override
     public Long createOrder(OrdersReqDto ordersReqDto) {
 
-        Phone phone = phoneRepository.findById(ordersReqDto.getPhoneId()).get();
-        Plan plan = planRepository.findById(ordersReqDto.getPlanId()).get();
-        Color color = colorRepository.findById(ordersReqDto.getColorId()).get();
+        Phone phone = phoneRepository.findById(ordersReqDto.getPhoneId()).orElse(null);
+        Plan plan = planRepository.findById(ordersReqDto.getPlanId()).orElse(null);
+        Color color = colorRepository.findById(ordersReqDto.getColorId()).orElse(null);
 
         Orders order = Orders.builder()
                 .phone(phone)
                 .plan(plan)
                 .color(color)
                 .deliveryType(ordersReqDto.getDeliveryType())
-                .customerType(ordersReqDto.getCustomerType())
-                .customerName(ordersReqDto.getCustomerName())
-                .changePhoneNumber(ordersReqDto.getChangePhoneNumber())
-                .ablePhoneNumber(ordersReqDto.getAblePhoneNumber())
-                .customerEmail(ordersReqDto.getCustomerEmail())
-                .customerAddress(ordersReqDto.getCustomerAddress())
-                .billAcceptWay(ordersReqDto.getBillAcceptWay())
-                .payWay(ordersReqDto.getPayWay())
+                .customerType(ordersReqDto.getUserType())
+                .customerName(ordersReqDto.getUserName())
+                .changePhoneNumber(ordersReqDto.getUserPhone())
+                .ablePhoneNumber(ordersReqDto.getAblePhone())
+                .customerEmail(ordersReqDto.getEmail())
+                .customerAddress(ordersReqDto.getAddress())
+                .billAcceptWay(ordersReqDto.getBillType())
+                .payWay(ordersReqDto.getPayType())
                 .build();
-
         Orders saveOrder = ordersRepository.save(order);
 
         return saveOrder.getId();
