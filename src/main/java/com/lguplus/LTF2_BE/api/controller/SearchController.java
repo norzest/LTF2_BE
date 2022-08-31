@@ -24,13 +24,13 @@ public class SearchController {
     private final FixKeyWordService fixKeyWordService;
 
     @GetMapping("/{key_word}")
-    @ApiOperation(value = "키워드 검색", notes = "키워드를 통해 기기명이나 제조사로 검색한다.")
+    @ApiOperation(value = "상품 검색", notes = "검색한 키워드와 일치하는 상품을 전체 조회한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
-            @ApiResponse(code = 400, message = "검색에 실패하였습니다.")
+            @ApiResponse(code = 404, message = "검색한 키워드와 일치하는 상품이 존재하지 않습니다."),
+            @ApiResponse(code = 500, message = "검색 결과를 불러오는데 실패하였습니다."),
     })
-    public ResponseEntity<Map<String, Object>> search(
-            @PathVariable(value="key_word") @ApiParam(value = "키워드", required = true, example = "갤럭시") String keyWord) {
+    public ResponseEntity<Map<String, Object>> search(@PathVariable(value="key_word") @ApiParam(value = "키워드", required = true, example = "아이폰") String keyWord) {
         Map<String, Object> resultMap = new HashMap<>();
         HttpStatus status = null;
 
@@ -61,7 +61,7 @@ public class SearchController {
             status = HttpStatus.BAD_REQUEST;
         } catch (Exception e) {
             resultMap.put("message", "검색에 실패하였습니다.");
-            status = HttpStatus.BAD_REQUEST;
+            status = HttpStatus.NOT_FOUND;
         }
 
         return new ResponseEntity<>(resultMap, status);
