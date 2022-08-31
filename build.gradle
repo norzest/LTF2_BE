@@ -4,6 +4,16 @@ plugins {
 	id 'java'
 }
 
+
+jar {
+	enabled = false
+}
+
+bootJar {
+	archivesBaseName = 'app'
+	archiveFileName = 'app.jar'
+}
+
 group = 'com.lguplus'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -36,6 +46,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
+}
+
+test {
+	exclude '**/*'
 }
 
 tasks.named('test') {
