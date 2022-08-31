@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SearchService {
 
-    List<PhoneResDto> searchPhones(String keyWord);
+    List<PhoneResDto> searchPhones(String keyWord) throws Exception;
 }

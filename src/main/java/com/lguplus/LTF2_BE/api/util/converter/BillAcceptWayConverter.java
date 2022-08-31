@@ -1,6 +1,6 @@
-package com.lguplus.LTF2_BE.api.util;
+package com.lguplus.LTF2_BE.api.util.converter;
 
-import com.lguplus.LTF2_BE.core.domain.BillAcceptWay;
+import com.lguplus.LTF2_BE.core.domain.enm.BillAcceptWay;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
