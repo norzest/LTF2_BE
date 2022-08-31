@@ -24,6 +24,11 @@ public class OrdersServiceImpl implements OrdersService{
     @Override
     public Long createOrder(OrdersReqDto ordersReqDto) {
 
+        /**
+         * Orders 객체를 생성하기 위해
+         * DB에서 phone, plan, color를 조회하여 각각의 객체 반환
+         * DB에 해당 id가 존재하지 않을 경우 NullPointerException 발생
+         */
         Phone phone = phoneRepository.findById(ordersReqDto.getPhoneId())
                 .orElseThrow(() -> new NullPointerException());
         Plan plan = planRepository.findById(ordersReqDto.getPlanId())
@@ -31,6 +36,10 @@ public class OrdersServiceImpl implements OrdersService{
         Color color = colorRepository.findById(ordersReqDto.getColorId())
                 .orElseThrow(() -> new NullPointerException());
 
+        /**
+         * Orders 객체를 생성하기 위해 builder 패턴 활용
+         * phone, plan, color, ordersReqDto 정보를 활용하여 Orders 객체 생성
+         */
         Orders order = Orders.builder()
                 .phone(phone)
                 .plan(plan)
@@ -45,8 +54,10 @@ public class OrdersServiceImpl implements OrdersService{
                 .billAcceptWay(ordersReqDto.getBillType())
                 .payWay(ordersReqDto.getPayType())
                 .build();
+        // DB에 order 등록 후, 등록한 Orders 객체 반환
         Orders saveOrder = ordersRepository.save(order);
 
+        // saveOrder의 id 반환
         return saveOrder.getId();
     }
 }
