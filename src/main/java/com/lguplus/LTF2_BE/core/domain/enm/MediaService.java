@@ -1,4 +1,4 @@
-package com.lguplus.LTF2_BE.core.domain;
+package com.lguplus.LTF2_BE.core.domain.enm;
 
 import lombok.Getter;
 
