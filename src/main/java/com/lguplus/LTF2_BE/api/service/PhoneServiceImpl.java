@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -35,8 +36,11 @@ public class PhoneServiceImpl implements PhoneService {
 
     @Override
     public List<PhoneResDto> findPhonesByTelecomTech(String telecomTech) {
-
         List<Phone> phones = phoneRepository.findByTelecomTech(TelecomTech.convertValue(telecomTech));
+
+        if (phones.size() == 0) {
+            throw new NoSuchElementException();
+        }
 
         return phones.stream().map(PhoneResDto::new).collect(Collectors.toList());
     }

@@ -29,7 +29,7 @@ public class PhoneInfoResDto {
 
     private String memoryDes;
 
-    private String storage;
+    private Integer storage;
 
     private String waterproof;
 

@@ -24,9 +24,12 @@ public class OrdersServiceImpl implements OrdersService{
     @Override
     public Long createOrder(OrdersReqDto ordersReqDto) {
 
-        Phone phone = phoneRepository.findById(ordersReqDto.getPhoneId()).orElse(null);
-        Plan plan = planRepository.findById(ordersReqDto.getPlanId()).orElse(null);
-        Color color = colorRepository.findById(ordersReqDto.getColorId()).orElse(null);
+        Phone phone = phoneRepository.findById(ordersReqDto.getPhoneId())
+                .orElseThrow(() -> new NullPointerException());
+        Plan plan = planRepository.findById(ordersReqDto.getPlanId())
+                .orElseThrow(() -> new NullPointerException());
+        Color color = colorRepository.findById(ordersReqDto.getColorId())
+                .orElseThrow(() -> new NullPointerException());
 
         Orders order = Orders.builder()
                 .phone(phone)
