@@ -1,7 +1,7 @@
 package com.lguplus.LTF2_BE.api.dto.response;
 
 
-import com.lguplus.LTF2_BE.core.domain.MediaService;
+import com.lguplus.LTF2_BE.core.domain.enm.MediaService;
 import com.lguplus.LTF2_BE.core.domain.Plan;
 import com.lguplus.LTF2_BE.core.domain.PlanMediaService;
 import lombok.Data;

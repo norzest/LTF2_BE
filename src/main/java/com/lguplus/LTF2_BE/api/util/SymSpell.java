@@ -1,10 +1,15 @@
 package com.lguplus.LTF2_BE.api.util;
 
+import com.lguplus.LTF2_BE.core.domain.Keyword;
+import org.springframework.core.io.ClassPathResource;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,7 +45,7 @@ import java.util.regex.Pattern;
 
 public class SymSpell
 {
-    private static int editDistanceMax=2;
+    private static int editDistanceMax=3;
     private static int verbose = 0;
     //0: top suggestion
     //1: all suggestions of smallest edit distance
@@ -74,7 +79,7 @@ public class SymSpell
     //Dictionary that contains both the original words and the deletes derived from them. A term might be both word and delete from another word at the same time.
     //For space reduction a item might be either of type dictionaryItem or Int.
     //A dictionaryItem is used for word, word/delete, and delete with multiple suggestions. Int is used for deletes with a single suggestion (the majority of entries).
-    private static HashMap<String, Object> dictionary = new HashMap<String, Object>(); //initialisierung
+    private static HashMap<String, Object> dictionary = null; //initialisierung
 
     //List of unique words. By using the suggestions (Int) as index for this list they are translated into the original String.
     private static List<String> wordlist = new ArrayList<String>();
@@ -87,7 +92,7 @@ public class SymSpell
         // \d Digits
         // Provides identical results to Norvigs regex "[a-z]+" for latin characters, while additionally providing compatibility with non-latin characters
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile("[\\w-[\\d_]]+").matcher(text.toLowerCase());
+        Matcher m = Pattern.compile("[\\w-[\\d_]]+|.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.").matcher(text.toLowerCase());
         while (m.find()) {
             allMatches.add(m.group());
         }
@@ -180,38 +185,24 @@ public class SymSpell
     }
 
     //create a frequency dictionary from a corpus
-    private static void CreateDictionary(String corpus, String language)
+    public static void CreateDictionary(List<Keyword> list, String language)
     {
-        File f = new File(corpus);
-        if(!(f.exists() && !f.isDirectory()))
-        {
-            System.out.println("File not found: " + corpus);
+        if(dictionary != null)
             return;
-        }
 
-        System.out.println("Creating dictionary ...");
-        long startTime = System.currentTimeMillis();
-        long wordCount = 0;
+        dictionary = new HashMap<String, Object>();
 
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(corpus));
-            String line;
-            while ((line = br.readLine()) != null)
-            {
-                for (String key : parseWords(line))
-                {
-                    if (CreateDictionaryEntry(key, language)) wordCount++;
-                }
-            }
-        }
-        catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        //wordlist.TrimExcess();
-        long endTime = System.currentTimeMillis();
-        System.out.println("\rDictionary: " + wordCount + " words, " + dictionary.size() + " entries, edit distance=" + editDistanceMax + " in " + (endTime-startTime)+"ms ");
+//      long startTime = System.currentTimeMillis();
+//      long wordCount = 0;
+
+        for (Keyword keyword : list)
+            for (String key : parseWords(keyword.getWord()))
+                CreateDictionaryEntry(key, language);
+//              if (CreateDictionaryEntry(key, language)) wordCount++;
+
+//      wordlist.TrimExcess();
+//      long endTime = System.currentTimeMillis();
+//      System.out.println("\rDictionary: " + wordCount + " words, " + dictionary.size() + " entries, edit distance=" + editDistanceMax + " in " + (endTime-startTime)+"ms ");
     }
 
     //save some time and space
@@ -403,7 +394,7 @@ public class SymSpell
         else return suggestions;
     }
 
-    private static void Correct(String input, String language)
+    public static String Correct(String input, String language)
     {
         List<suggestItem> suggestions = null;
 
@@ -423,41 +414,14 @@ public class SymSpell
         //check in dictionary for existence and frequency; sort by ascending edit distance, then by descending word frequency
         suggestions = Lookup(input, language, editDistanceMax);
 
-        //display term and frequency
-        for (suggestItem suggestion: suggestions)
-        {
-            System.out.println( suggestion.term + " " + suggestion.distance + " " + suggestion.count);
-        }
-        if (verbose !=0) System.out.println(suggestions.size() + " suggestions");
-        System.out.println("done");
-    }
-
-    private static void ReadFromStdIn()
-    {
-        String word;
-        BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
-        try {
-            while ((word = br.readLine())!=null)
-            {
-                Correct(word,"");
-            }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args)
-    {
-
-        //Create the dictionary from a sample corpus
-        //e.g. http://norvig.com/big.txt , or any other large text corpus
-        //The dictionary may contain vocabulary from different languages.
-        //If you use mixed vocabulary use the language parameter in Correct() and CreateDictionary() accordingly.
-        //You may use CreateDictionaryEntry() to update a (self learning) dictionary incrementally
-        //To extend spelling correction beyond single words to phrases (e.g. correcting "unitedkingom" to "united kingdom") simply add those phrases with CreateDictionaryEntry().
-        CreateDictionary("/Users/pranavgupta/Desktop/bot/cities.txt","");
-        ReadFromStdIn();
+        return suggestions.get(0).term;
+//        //display term and frequency
+//        for (suggestItem suggestion: suggestions)
+//        {
+//            System.out.println( suggestion.term + " " + suggestion.distance + " " + suggestion.count);
+//        }
+//        if (verbose !=0) System.out.println(suggestions.size() + " suggestions");
+//        System.out.println("done");
     }
 
     // Damerau–Levenshtein distance algorithm and code

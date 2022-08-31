@@ -1,9 +1,13 @@
 package com.lguplus.LTF2_BE.core.domain;
 
-import com.lguplus.LTF2_BE.api.util.BillAcceptWayConverter;
-import com.lguplus.LTF2_BE.api.util.CustomerTypeConverter;
-import com.lguplus.LTF2_BE.api.util.DeliveryTypeConverter;
-import com.lguplus.LTF2_BE.api.util.PayWayConverter;
+import com.lguplus.LTF2_BE.api.util.converter.BillAcceptWayConverter;
+import com.lguplus.LTF2_BE.api.util.converter.CustomerTypeConverter;
+import com.lguplus.LTF2_BE.api.util.converter.DeliveryTypeConverter;
+import com.lguplus.LTF2_BE.api.util.converter.PayWayConverter;
+import com.lguplus.LTF2_BE.core.domain.enm.BillAcceptWay;
+import com.lguplus.LTF2_BE.core.domain.enm.CustomerType;
+import com.lguplus.LTF2_BE.core.domain.enm.DeliveryType;
+import com.lguplus.LTF2_BE.core.domain.enm.PayWay;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

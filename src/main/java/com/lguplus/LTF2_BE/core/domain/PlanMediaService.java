@@ -1,6 +1,7 @@
 package com.lguplus.LTF2_BE.core.domain;
 
-import com.lguplus.LTF2_BE.api.util.MediaServiceConverter;
+import com.lguplus.LTF2_BE.api.util.converter.MediaServiceConverter;
+import com.lguplus.LTF2_BE.core.domain.enm.MediaService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

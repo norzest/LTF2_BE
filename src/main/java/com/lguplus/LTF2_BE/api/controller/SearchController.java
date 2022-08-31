@@ -1,6 +1,7 @@
 package com.lguplus.LTF2_BE.api.controller;
 
 import com.lguplus.LTF2_BE.api.dto.response.PhoneResDto;
+import com.lguplus.LTF2_BE.api.service.FixKeyWordService;
 import com.lguplus.LTF2_BE.api.service.SearchService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class SearchController {
 
     private final SearchService searchService;
+    private final FixKeyWordService fixKeyWordService;
 
     @GetMapping("/{key_word}")
     @ApiOperation(value = "상품 검색", notes = "검색한 키워드와 일치하는 상품을 전체 조회한다.")
@@ -34,19 +36,31 @@ public class SearchController {
 
         List<PhoneResDto> result = null;
 
-        result = searchService.searchPhones(keyWord);
-
         try {
+            result = searchService.searchPhones(keyWord);
+
             if (result.size() == 0) {
-                resultMap.put("message", "검색 결과가 없습니다.");
+                String fixed = fixKeyWordService.fixKeyWord(keyWord);
+                result = searchService.searchPhones(fixed);
+
+                if(result.size() == 0) {
+                    resultMap.put("message", "검색 결과가 없습니다.");
+                } else {
+                    resultMap.put("keyWord", fixed);
+                    resultMap.put("SearchList", result);
+                }
+
             } else {
+                resultMap.put("keyWord", "");
                 resultMap.put("SearchList", result);
             }
+
             status = HttpStatus.OK;
         } catch (NullPointerException e) {
             resultMap.put("message", "두 글자 이상의 검색어를 입력하세요.");
             status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
+            resultMap.put("message", "검색에 실패하였습니다.");
             status = HttpStatus.NOT_FOUND;
         }
 
