@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface PlanRepository extends JpaRepository<Plan, Long> {
 
+    // DB에서 통신기술에 따른 요금제 리스트를 조회한 후 반환
     List<Plan> findByTelecomTech(TelecomTech telecomTech);
 }

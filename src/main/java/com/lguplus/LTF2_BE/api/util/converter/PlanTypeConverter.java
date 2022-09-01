@@ -16,7 +16,12 @@ public class PlanTypeConverter implements AttributeConverter<PlanType, Integer> 
         return attribute.getCode();
     }
 
-    // DB 값을 문자열로 변환해서 불러오기
+    /**
+     * DB 값을 문자열로 변환해서 불러온다
+     * PlanType 에 지정된 열거타입의 Code 중에서
+     * dbData 와 일치하는 타입을 찾아서 반환
+     * 없을 경우 Exception 발생
+     */
     @Override
     public PlanType convertToEntityAttribute(Integer dbData) {
         return EnumSet.allOf(PlanType.class).stream()

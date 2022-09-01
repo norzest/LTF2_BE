@@ -37,29 +37,39 @@ public class SearchController {
         List<PhoneResDto> result = null;
 
         try {
+            // keyWord 를 포함하는 상품이 있는지 조회하기 위해 searchService 의 searchPhones() 함수 호출
             result = searchService.searchPhones(keyWord);
 
             if (result.size() == 0) {
+                // result 의 사이즈가 0 일 경우
+                // keyWord 를 알맞은 문자열로 수정하기 위해 fixKeyWordService 의 fixKeyWord() 함수 호출
                 String fixed = fixKeyWordService.fixKeyWord(keyWord);
+                // 수정된 문자열을 통해 한번 더 조회
                 result = searchService.searchPhones(fixed);
 
                 if(result.size() == 0) {
+                    // 그래도 사이즈가 0 일 경우 message 반환
                     resultMap.put("message", "검색 결과가 없습니다.");
                 } else {
+                    // 아닐 경우 수정 된 keyWord 와 검색 결과 반환
                     resultMap.put("keyWord", fixed);
                     resultMap.put("SearchList", result);
                 }
 
             } else {
+                // 한번에 검색되었을 경우 keyWord 를 공백으로 하고
+                // 검색 결과와 같이 반환
                 resultMap.put("keyWord", "");
                 resultMap.put("SearchList", result);
             }
 
             status = HttpStatus.OK;
         } catch (NullPointerException e) {
+            // NullPointerException 발생 시 400 error 응답
             resultMap.put("message", "두 글자 이상의 검색어를 입력하세요.");
             status = HttpStatus.BAD_REQUEST;
         } catch (Exception e) {
+            // 그 외 Exception 발생 시 404 error 응답
             resultMap.put("message", "검색에 실패하였습니다.");
             status = HttpStatus.NOT_FOUND;
         }
