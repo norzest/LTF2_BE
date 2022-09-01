@@ -35,16 +35,21 @@ public class PlanController {
         List<PlanResDto> result = null;
 
         try {
+            // 요금제 전체 조회를 위해 planService 의 findAll() 함수 호출
             result = planService.findAll();
 
             if(result.size() == 0) {
+                // 요금제 리스트의 사이즈가 0 일 경우 404 error 응답
                 resultMap.put("message", "해당하는 요금제가 존재하지 않습니다.");
                 status = HttpStatus.NOT_FOUND;
             } else {
+                // 아닐 경우 PlanList 반환
                 resultMap.put("PlanList", result);
                 status = HttpStatus.OK;
             }
+
         } catch (Exception e) {
+            // Exception 발생 시 500 error 응답
             e.printStackTrace();
             resultMap.put("message", "요금제를 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -68,16 +73,20 @@ public class PlanController {
 
         List<PlanResDto> result = null;
         try {
+            // 통신기술에 따른 요금제 리스트 조회를 위해 planService 의 findByTelecomTech() 함수 호출
             result = planService.findByTelecomTech(telecomTech);
 
             if(result.size() == 0) {
+                // 요금제 리스트의 사이즈가 0 일 경우 404 error 응답
                 resultMap.put("message", "해당하는 요금제가 존재하지 않습니다.");
                 status = HttpStatus.NOT_FOUND;
             } else {
+                // 아닐 경우 PlanList 반환
                 resultMap.put("PlanList", result);
                 status = HttpStatus.OK;
             }
         } catch (Exception e) {
+            // Exception 발생 시 500 error 응답
             e.printStackTrace();
             resultMap.put("message", "요금제를 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -102,16 +111,20 @@ public class PlanController {
         PlanResDto result = null;
 
         try {
+            // 특정 요금제 조회를 위해 planService 의 findOne() 함수 호출
             result = planService.findOne(planId);
 
             if(result == null) {
+                // 요금제가 null 일 경우 404 error 응답
                 resultMap.put("message", "해당하는 요금제가 존재하지 않습니다.");
                 status = HttpStatus.NOT_FOUND;
             } else {
+                // 아닐 경우 Plan 반환
                 resultMap.put("Plan", result);
                 status = HttpStatus.OK;
             }
         } catch (Exception e) {
+            // Exception 발생 시 500 error 응답
             e.printStackTrace();
             resultMap.put("message", "요금제를 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
