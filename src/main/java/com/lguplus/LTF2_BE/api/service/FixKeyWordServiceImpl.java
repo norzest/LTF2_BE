@@ -1,14 +1,8 @@
 package com.lguplus.LTF2_BE.api.service;
 
-import com.lguplus.LTF2_BE.core.domain.Keyword;
 import com.lguplus.LTF2_BE.core.repository.KeywordRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
 import static com.lguplus.LTF2_BE.api.util.SymSpell.Correct;
 import static com.lguplus.LTF2_BE.api.util.SymSpell.CreateDictionary;
