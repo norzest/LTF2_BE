@@ -12,6 +12,7 @@ public interface PhoneRepository extends JpaRepository<Phone, Long> {
     // DB에서 상품 전체를 조회한 후 id 순으로 정렬하여 반환
     List<Phone> findAllByOrderById();
 
+    // DB 에서 상품 이름 또는 제조사의 문자열을 포함하는 상품들을 반환한다
     List<Phone> findByTitleNameContainsOrManufacturingCompany(String titleName, ManufacturingCompany company);
 
     // DB에서 통신기술에 따른 상품 리스트를 조회한 후 반환

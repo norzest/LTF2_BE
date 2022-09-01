@@ -39,10 +39,13 @@ public class PublicSupportController {
         HttpStatus status = null;
 
         try {
+            // 핸드폰에 맞는 공시지원금 조회를 위해 publicSupportService의 findPublicSupportPlanRes() 함수 호출
             publicSupportPhoneResList = publicSupportService.findPublicSupportPlanResDto(phoneId);
+            // 요금제에 따른 공시지원금 리스트가 있을 경우 PlanList 반환
             status = HttpStatus.OK;
             resultMap.put("PlanList",publicSupportPhoneResList);
         } catch (Exception e) {
+            // Exception 발생 시 404 error 응답
             status = HttpStatus.NOT_FOUND;
         }
 
@@ -63,10 +66,13 @@ public class PublicSupportController {
         HttpStatus status = null;
 
         try {
+            // 요금제에 맞는 공시지원금 조회를 위해 publicSupportService의 findPublicSupportPhoneResDto() 함수 호출
             publicSupportPhoneResList = publicSupportService.findPublicSupportPhoneResDto(planId);
+            // 핸드폰에 따른 공시지원금 리스트가 있을 경우 PhoneList 반환
             status = HttpStatus.OK;
             resultMap.put("PhoneList",publicSupportPhoneResList);
         } catch (Exception e) {
+            // Exception 발생 시 404 error 응답
             status = HttpStatus.NOT_FOUND;
         }
 
@@ -87,10 +93,13 @@ public class PublicSupportController {
         HttpStatus status = null;
 
         try {
+            // 핸드폰과 요금제에 맞는 공시지원금 조회를 위해 publicSupportService의 findPublicSupportResDto() 함수 호출
             publicSupportPrice = publicSupportService.findPublicSupportResDto(phoneId, planId);
+            // 해당 공시지원금이 있을 경우 PublicSupportPrice 반환
             status = HttpStatus.OK;
             resultMap.put("PublicSupportPrice",publicSupportPrice);
         } catch (Exception e) {
+            // Exception 발생 시 404 error 응답
             status = HttpStatus.NOT_FOUND;
         }
 
