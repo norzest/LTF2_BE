@@ -33,6 +33,8 @@ public class PhoneResDto {
 
     private Integer orderCount;
 
+    private Integer weeklyOrderCount;
+
     public PhoneResDto(Phone phone) {
         phoneId = phone.getId();
         titleName = phone.getTitleName();
@@ -47,5 +49,23 @@ public class PhoneResDto {
                 .stream().map(PhoneColor::getColor).collect(Collectors.toList())
                 .stream().map(ColorResDto::new).collect(Collectors.toList());
         orderCount = phone.getOrders().size();
+        this.weeklyOrderCount = 0;
+    }
+
+    public PhoneResDto(Phone phone, Integer weeklyOrderCount) {
+        phoneId = phone.getId();
+        titleName = phone.getTitleName();
+        titleSub = phone.getTitleSub();
+        model = phone.getModel();
+        price = phone.getPrice();
+        previewImg = phone.getPreviewImg();
+        manufacturingCompany = phone.getManufacturingCompany().getValue();
+        telecomTech = phone.getTelecomTech().getValue();
+        phoneInfo = new PhoneInfoResDto(phone.getPhoneInfo());
+        colorList = phone.getPhoneColors()
+                .stream().map(PhoneColor::getColor).collect(Collectors.toList())
+                .stream().map(ColorResDto::new).collect(Collectors.toList());
+        orderCount = phone.getOrders().size();
+        this.weeklyOrderCount = weeklyOrderCount;
     }
 }

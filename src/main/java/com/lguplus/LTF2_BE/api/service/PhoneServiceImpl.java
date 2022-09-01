@@ -5,13 +5,13 @@ import com.lguplus.LTF2_BE.api.dto.response.PhoneDetailResDto;
 import com.lguplus.LTF2_BE.api.dto.response.PhoneResDto;
 import com.lguplus.LTF2_BE.core.domain.*;
 import com.lguplus.LTF2_BE.core.domain.enm.TelecomTech;
-import com.lguplus.LTF2_BE.core.repository.ColorRepository;
-import com.lguplus.LTF2_BE.core.repository.PhoneColorRepository;
-import com.lguplus.LTF2_BE.core.repository.PhoneImgRepository;
-import com.lguplus.LTF2_BE.core.repository.PhoneRepository;
+import com.lguplus.LTF2_BE.core.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -26,6 +26,8 @@ public class PhoneServiceImpl implements PhoneService {
     private final PhoneImgRepository phoneImgRepository;
     private final PhoneColorRepository phoneColorRepository;
 
+    private final OrdersRepository ordersRepository;
+
     /// 상품을 전체 조회하는 함수
     @Override
     public List<PhoneResDto> findPhones() {
@@ -33,8 +35,28 @@ public class PhoneServiceImpl implements PhoneService {
         // DB에서 상품 전체를 조회하여 id 순으로 정렬한 후 Phone 배열 반환
         List<Phone> phones = phoneRepository.findAllByOrderById();
 
-        // List<Phone>을 List<PhoneResDto>로 변환하기 위해 stream() 함수를 활용
-        return phones.stream().map(PhoneResDto::new).collect(Collectors.toList());
+        // 최근 7일간 판매량을 가져오기 위해 현재날짜로부터 6일전 0시까지의 날짜를 설정
+        LocalDateTime startDate = LocalDateTime.of(LocalDate.now().minusDays(6), LocalTime.of(0,0,0));
+        LocalDateTime endDate = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+
+        /**
+         * phoneResDtos를 초기화 후
+         * for 문을 돌며 PhoneResDto 객체를 생성 후 phoneResDtos에 추가
+         * phoneId, startDate, endDate에 해당하는 List<Orders>를 반환받아
+         * size() 함수를 통해 판매량을 반환
+         * phone, weeklyOrderCount를 인자로 PhoneResDto 객체 생성
+         */
+        List<PhoneResDto> phoneResDtos = new ArrayList<>();
+        for (Phone phone : phones) {
+            Integer weeklyOrderCount = ordersRepository.findByPhoneIdAndOrderDateBetween(phone.getId(), startDate, endDate).size();
+
+            PhoneResDto phoneResDto = new PhoneResDto(phone, weeklyOrderCount);
+
+            phoneResDtos.add(phoneResDto);
+        }
+
+        // List<PhoneResDto> 반환
+        return phoneResDtos;
     }
 
     // 통신 기술에 따른 상품 리스트를 조회하는 함수
@@ -49,8 +71,28 @@ public class PhoneServiceImpl implements PhoneService {
             throw new NoSuchElementException();
         }
 
-        // List<Phone>을 List<PhoneResDto>로 변환하기 위해 stream() 함수를 활용
-        return phones.stream().map(PhoneResDto::new).collect(Collectors.toList());
+        // 최근 7일간 판매량을 가져오기 위해 현재날짜로부터 6일전 0시까지의 날짜를 설정
+        LocalDateTime startDate = LocalDateTime.of(LocalDate.now().minusDays(6), LocalTime.of(0,0,0));
+        LocalDateTime endDate = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59));
+
+        /**
+         * phoneResDtos를 초기화 후
+         * for 문을 돌며 PhoneResDto 객체를 생성 후 phoneResDtos에 추가
+         * phoneId, startDate, endDate에 해당하는 List<Orders>를 반환받아
+         * size() 함수를 통해 판매량을 반환
+         * phone, weeklyOrderCount를 인자로 PhoneResDto 객체 생성
+         */
+        List<PhoneResDto> phoneResDtos = new ArrayList<>();
+        for (Phone phone : phones) {
+            Integer weeklyOrderCount = ordersRepository.findByPhoneIdAndOrderDateBetween(phone.getId(), startDate, endDate).size();
+
+            PhoneResDto phoneResDto = new PhoneResDto(phone, weeklyOrderCount);
+
+            phoneResDtos.add(phoneResDto);
+        }
+
+        // List<PhoneResDto> 반환
+        return phoneResDtos;
     }
 
     // 상품을 상세 조회하는 함수
