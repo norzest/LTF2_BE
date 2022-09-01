@@ -84,7 +84,7 @@ public class SymSpell
         // \d Digits
         // Provides identical results to Norvigs regex "[a-z]+" for latin characters, while additionally providing compatibility with non-latin characters
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile("[\\w-[\\d_]]+|.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.").matcher(text.toLowerCase());
+        Matcher m = Pattern.compile(".+[\\w-[\\d_]]|.+[ㄱ-ㅎㅏ-ㅣ가-힣]").matcher(text.toLowerCase());
         while (m.find()) {
             allMatches.add(m.group());
         }
