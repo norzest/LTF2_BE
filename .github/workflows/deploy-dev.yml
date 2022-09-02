@@ -2,8 +2,7 @@ name: Deploy development server
 
 on:
   pull_request_target:
-    branches:
-      - dev
+    branches: [ dev ]
 
 env:
   AWS_REGION: ap-northeast-2
