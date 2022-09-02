@@ -38,14 +38,18 @@ public class ShoppingBasketController {
         ShoppingBasketResDto shoppingBasket = null;
 
         try {
+            // 장바구니 데이터 조회를 위해 shoppingBasketService의 findShoppingBasket() 함수 호출
             shoppingBasket = shoppingBasketService.findShoppingBasket(phoneId, planId, colorId);
 
+            // 장바구니 데이터가 있을 경우 client에 shoppingBasket 반환
             resultMap.put("shoppingBasket", shoppingBasket);
             status = HttpStatus.OK;
         } catch (NoSuchElementException e) {
+            // NoSuchElementException 발생 시 404 error 응답
             resultMap.put("message", "id를 다시 확인해주세요.");
             status = HttpStatus.NOT_FOUND;
         } catch (Exception e) {
+            // 그 외 Exception 발생 시 500 error 응답
             resultMap.put("message", "장바구니 데이터를 불러오는데 실패하였습니다.");
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
