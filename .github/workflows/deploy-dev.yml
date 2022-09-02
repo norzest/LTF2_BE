@@ -1,5 +1,4 @@
 name: Deploy development server to ECS
-
 on:
   pull_request_target:
     branches: [ dev ]
