@@ -1,9 +1,6 @@
 name: Deploy development server
 
 on:
-  push:
-    branches: [ dev ]
-
   pull_request_target:
     branches: [ dev ]
 
