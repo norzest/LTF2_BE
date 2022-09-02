@@ -15,7 +15,7 @@ env:
   ECS_TASK_DEFINITION: task-test
 
 jobs:
-  build:
+  CI_CD_START:
     runs-on: ubuntu-latest
 
     steps:
