@@ -1,4 +1,4 @@
-name: Java gradle build actions
+name: Java gradle build github actions
 
 on:
   push:
