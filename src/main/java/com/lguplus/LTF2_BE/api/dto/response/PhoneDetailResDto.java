@@ -18,6 +18,8 @@ public class PhoneDetailResDto {
 
     private String titleName;
 
+    private String titleSub;
+
     private String model;
 
     private Integer price;
@@ -35,6 +37,7 @@ public class PhoneDetailResDto {
     public PhoneDetailResDto(Phone phone, List<ColorResDto> colorList) {
         phoneId = phone.getId();
         titleName = phone.getTitleName();
+        titleSub = phone.getTitleSub();
         model = phone.getModel();
         price = phone.getPrice();
         manufacturingCompany = phone.getManufacturingCompany().getValue();
