@@ -11,7 +11,7 @@ env:
   ECS_CLUSTER_NAME: lg-develop-cluster
   ECS_CONTAINER_NAME: test-back-container
   ECS_SERVICE_NAME: test-service
-  ECS_TASK_DEFINITION: task-test
+  ECS_TASK_DEFINITION: test-task
 
 jobs:
   CI_CD_START:
