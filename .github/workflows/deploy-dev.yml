@@ -2,8 +2,7 @@ name: Deploy development server
 
 on:
   pull_request_target:
-    branches:
-      - dev
+    branches: [ dev ]
 
 env:
   AWS_REGION: ap-northeast-2
@@ -15,7 +14,7 @@ env:
   ECS_TASK_DEFINITION: task-test
 
 jobs:
-  build:
+  CI_CD_START:
     runs-on: ubuntu-latest
 
     steps:
