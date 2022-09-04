@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+// writer : 최강현
 @SpringBootTest
 @Transactional
 public class OrdersServiceTest {

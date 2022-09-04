@@ -5,6 +5,7 @@ import com.lguplus.LTF2_BE.api.dto.response.PhoneResDto;
 
 import java.util.List;
 
+// writer : 최강현
 public interface PhoneService {
 
     // 상품을 전체 조회하는 함수

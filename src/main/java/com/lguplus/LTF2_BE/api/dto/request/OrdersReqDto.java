@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// writer : 최강현
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
