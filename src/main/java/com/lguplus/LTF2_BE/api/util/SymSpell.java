@@ -405,7 +405,8 @@ public class SymSpell
 
         //check in dictionary for existence and frequency; sort by ascending edit distance, then by descending word frequency
         suggestions = Lookup(input, language, editDistanceMax);
-
+        if (suggestions.size() == 0)
+            return input;
         return suggestions.get(0).term;
 //        //display term and frequency
 //        for (suggestItem suggestion: suggestions)
