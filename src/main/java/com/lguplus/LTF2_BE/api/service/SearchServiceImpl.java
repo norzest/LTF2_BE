@@ -16,6 +16,8 @@ public class SearchServiceImpl implements SearchService{
 
     private final PhoneRepository phoneRepository;
 
+    // writer : 권혁준
+    // modifier : 심영효
     // 검색어에 따른 검색 결과를 반환하는 함수
     @Override
     public List<PhoneResDto> searchPhones(String keyWord) throws Exception {

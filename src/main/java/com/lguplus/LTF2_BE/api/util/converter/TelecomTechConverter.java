@@ -7,6 +7,7 @@ import javax.persistence.Converter;
 import java.util.EnumSet;
 import java.util.NoSuchElementException;
 
+// writer : 심영효
 @Converter
 public class TelecomTechConverter implements AttributeConverter<TelecomTech, Integer> {
 

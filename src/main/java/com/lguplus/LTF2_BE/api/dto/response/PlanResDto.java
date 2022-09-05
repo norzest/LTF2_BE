@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// writer : 심영효
 @Data
 @NoArgsConstructor
 public class PlanResDto {

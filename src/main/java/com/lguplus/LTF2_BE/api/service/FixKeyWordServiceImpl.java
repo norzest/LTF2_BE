@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import static com.lguplus.LTF2_BE.api.util.SymSpell.Correct;
 import static com.lguplus.LTF2_BE.api.util.SymSpell.CreateDictionary;
 
+// writer : 심영효
 @RequiredArgsConstructor
 @Service
 public class FixKeyWordServiceImpl implements FixKeyWordService{

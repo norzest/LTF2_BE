@@ -23,6 +23,8 @@ public class SearchController {
     private final SearchService searchService;
     private final FixKeyWordService fixKeyWordService;
 
+    // writer : 권혁준
+    // modifier : 최강현, 심영효
     @GetMapping("/{key_word}")
     @ApiOperation(value = "상품 검색", notes = "검색한 키워드와 일치하는 상품을 전체 조회한다.")
     @ApiResponses({

@@ -2,6 +2,7 @@ package com.lguplus.LTF2_BE.core.domain.enm;
 
 import lombok.Getter;
 
+// writer : 심영효
 @Getter
 public enum DeliveryType {
     POSTOFFICE(1, "우체국 택배"),
@@ -15,6 +16,7 @@ public enum DeliveryType {
         this.value = value;
     }
 
+    // writer : 심영효
     public static DeliveryType convertValue(String deliveryType) {
         DeliveryType result = null;
 

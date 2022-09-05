@@ -35,6 +35,7 @@ import java.util.regex.Pattern;
 // Usage: single word + Enter:  Display spelling suggestions
 //        Enter without input:  Terminate the program
 
+// writer : 심영효
 public class SymSpell
 {
     private static int editDistanceMax=3;
@@ -176,6 +177,7 @@ public class SymSpell
         return result;
     }
 
+    // modifier : 심영효
     //create a frequency dictionary from a corpus
     public static void CreateDictionary(List<Keyword> list, String language)
     {
@@ -386,6 +388,7 @@ public class SymSpell
         else return suggestions;
     }
 
+    // modifier : 심영효
     public static String Correct(String input, String language)
     {
         List<suggestItem> suggestions = null;
