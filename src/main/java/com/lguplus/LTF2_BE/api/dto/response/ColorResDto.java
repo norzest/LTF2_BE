@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+// writer : 최강현
 @Data
 @NoArgsConstructor
 public class ColorResDto {

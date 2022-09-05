@@ -17,6 +17,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+// writer : 최강현
 @Entity
 @Getter
 @NoArgsConstructor

@@ -12,6 +12,7 @@ import com.lguplus.LTF2_BE.core.repository.PlanRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+// writer : 최강현
 @RequiredArgsConstructor
 @Service
 public class OrdersServiceImpl implements OrdersService{

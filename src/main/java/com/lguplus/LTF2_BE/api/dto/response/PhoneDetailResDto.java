@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// writer : 최강현
 @Data
 @NoArgsConstructor
 public class PhoneDetailResDto {
