@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+// writer : 심영효
 @Entity
 @Getter
 @NoArgsConstructor

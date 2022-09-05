@@ -2,6 +2,7 @@ package com.lguplus.LTF2_BE.core.domain.enm;
 
 import lombok.Getter;
 
+// writer : 심영효
 @Getter
 public enum PlanType {
     BASIC(1, "데이터 일반"),

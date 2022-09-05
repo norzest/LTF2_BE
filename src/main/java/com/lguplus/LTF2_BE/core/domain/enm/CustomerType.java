@@ -2,6 +2,7 @@ package com.lguplus.LTF2_BE.core.domain.enm;
 
 import lombok.Getter;
 
+// writer : 최강현
 @Getter
 public enum CustomerType {
 
@@ -16,6 +17,7 @@ public enum CustomerType {
         this.value = value;
     }
 
+    // writer : 심영효
     public static CustomerType convertValue (String customerType) {
         CustomerType result = null;
 

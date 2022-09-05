@@ -2,6 +2,7 @@ package com.lguplus.LTF2_BE.core.domain.enm;
 
 import lombok.Getter;
 
+// writer : 심영효
 @Getter
 public enum MediaService {
     MOVIE(1, "U+영화월정액"),

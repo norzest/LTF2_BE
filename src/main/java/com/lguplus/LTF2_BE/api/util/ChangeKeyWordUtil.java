@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// writer : 심영효
 public class ChangeKeyWordUtil {
     private static Map<String, String> dict = null;
 
