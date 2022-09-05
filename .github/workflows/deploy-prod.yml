@@ -1,16 +1,16 @@
 name: Deploy development server to ECS
 on:
   pull_request_target:
-    branches: [ dev ]
+    branches: [ main ]
 
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REPOSITORY: lguplus-back-dev
+  ECR_REPOSITORY: lguplus-prod-back
 
-  ECS_CLUSTER_NAME: lg-develop-cluster
-  ECS_CONTAINER_NAME: test-back-container
-  ECS_SERVICE_NAME: lg-develop-service
-  ECS_TASK_DEFINITION: lg-develop-task
+  ECS_CLUSTER_NAME: lg-prod-cluster
+  ECS_CONTAINER_NAME: lg-prod-back-container
+  ECS_SERVICE_NAME: lg-prod-service
+  ECS_TASK_DEFINITION: lg-prod-task
 
 jobs:
   CI_CD_START:
@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir -p ./src/main/resources
           touch ./src/main/resources/application.properties
-          echo "${{ secrets.DEV_SPRING_APPLICATION_PROPERTIES }}" > ./src/main/resources/application.properties
+          echo "${{ secrets.PROD_SPRING_APPLICATION_PROPERTIES }}" > ./src/main/resources/application.properties
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
