@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+// writer : 권혁준
 @Data
 @NoArgsConstructor
 public class ShoppingBasketResDto {
